@@ -6,3 +6,4 @@ build/sstate-cache
 build/sstate-cache/*
 build/tmp
 build/tmp/*
+bootlin-lab-data/*
