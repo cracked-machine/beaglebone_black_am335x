@@ -1,0 +1,1 @@
+beaglebone_black_ am335x
