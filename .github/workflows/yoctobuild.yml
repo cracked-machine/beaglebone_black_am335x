@@ -43,7 +43,7 @@ jobs:
         
         pwd
         ls -la 
-        source poky/oe-init-build-env
+        . poky/oe-init-build-env
 
         bitbake core-image-minimal -g
 
