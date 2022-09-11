@@ -1,0 +1,6 @@
+[submodule "poky"]
+	path = poky
+	url = https://git.yoctoproject.org/git/poky
+[submodule "export_bitbake_dot_depends"]
+	path = export_bitbake_dot_depends
+	url = https://github.com/cracked-machine/export_bitbake_dot_depends.git
