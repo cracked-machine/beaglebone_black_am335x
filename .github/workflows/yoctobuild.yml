@@ -41,7 +41,8 @@ jobs:
           zstd \
           liblz4-tool
         
-        
+        pwd
+        echo ${GITHUB_WORKSPACE} 
         . ${GITHUB_WORKSPACE}/poky/oe-init-build-env
 
         bitbake core-image-minimal -g
