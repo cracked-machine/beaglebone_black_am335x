@@ -8,8 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: bitbake
+    
+    - name: Checkout Repository
+    - uses: actions/checkout@v3
+
+    - name: Install Yocto
       run: |
         git submodule update --init --recursive
         sudo apt -y update && sudo apt -y install \
@@ -41,14 +44,26 @@ jobs:
           zstd \
           liblz4-tool
         
-
+    - name: Initialise Yocto
+      run: |
         . ${GITHUB_WORKSPACE}/poky/oe-init-build-env
 
         sed -i "s|/home/chris/Projects/Yocto/bbb/beaglebone_black_am335x|${GITHUB_WORKSPACE}|g" ${GITHUB_WORKSPACE}/build/conf/bblayers.conf
 
-
+    - name: Run Bitbake
+      run: |
         bitbake core-image-minimal
         bitbake core-image-minimal - g
-
+        
+    - name: Export Dot files and create dependency graph images
+      run: |
         pushd ${GITHUB_WORKSPACE}/export_bitbake_dot_depends && ./export_depends_dot.sh && popd || popd
         pushd ${GITHUB_WORKSPACE}/export_bitbake_dot_depends && python3 -m dot2graph && popd || popd
+
+    - name: Archive dependency analysis results
+      uses: actions/upload-artifact@v3
+      with:
+        name: dependency-analysis-results
+        path: |
+          ${GITHUB_WORKSPACE}/DEPENDS.md
+          ${GITHUB_WORKSPACE}/png/*.png
