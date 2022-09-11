@@ -41,14 +41,11 @@ jobs:
           zstd \
           liblz4-tool
         
-        pwd
-        echo ${GITHUB_WORKSPACE} 
+
         . ${GITHUB_WORKSPACE}/poky/oe-init-build-env
 
-        cat ${GITHUB_WORKSPACE}/build/conf/local.conf | grep BB_SIGNATURE_HANDLER
         sed -i "s|/home/chris/Projects/Yocto/bbb/beaglebone_black_am335x|${GITHUB_WORKSPACE}|g" ${GITHUB_WORKSPACE}/build/conf/bblayers.conf
-        cat ${GITHUB_WORKSPACE}/build/conf/bblayers.conf | grep /home/chris/Projects/Yocto/bbb/beaglebone_black_am335x
-        cat ${GITHUB_WORKSPACE}/build/conf/bblayers.conf | grep ${GITHUB_WORKSPACE}
+
 
         bitbake core-image-minimal
         bitbake core-image-minimal - g
