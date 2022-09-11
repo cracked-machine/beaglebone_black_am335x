@@ -45,7 +45,8 @@ jobs:
         echo ${GITHUB_WORKSPACE} 
         . ${GITHUB_WORKSPACE}/poky/oe-init-build-env
 
-        bitbake core-image-minimal -g
+        bitbake core-image-minimal
+        bitbake core-image-minimal - g
 
-        pushd export_bitbake_dot_depends && ./export_depends_dot.sh && popd || popd
-        pushd export_bitbake_dot_depends && python3 -m dot2graph && popd || popd
+        pushd ${GITHUB_WORKSPACE}/export_bitbake_dot_depends && ./export_depends_dot.sh && popd || popd
+        pushd ${GITHUB_WORKSPACE}/export_bitbake_dot_depends && python3 -m dot2graph && popd || popd
