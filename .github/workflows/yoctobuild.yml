@@ -41,9 +41,8 @@ jobs:
           zstd \
           liblz4-tool
         
-        pwd
-        ls -la 
-        . poky/oe-init-build-env
+        
+        . ${GITHUB_WORKSPACE}/poky/oe-init-build-env
 
         bitbake core-image-minimal -g
 
