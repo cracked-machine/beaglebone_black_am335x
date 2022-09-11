@@ -10,7 +10,7 @@ jobs:
     steps:
     
     - name: Checkout Repository
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
 
     - name: Install Yocto
       run: |
@@ -54,7 +54,7 @@ jobs:
       run: |
         bitbake core-image-minimal
         bitbake core-image-minimal - g
-        
+
     - name: Export Dot files and create dependency graph images
       run: |
         pushd ${GITHUB_WORKSPACE}/export_bitbake_dot_depends && ./export_depends_dot.sh && popd || popd
