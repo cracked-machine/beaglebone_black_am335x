@@ -1,5 +1,9 @@
-*.ko
-*.dot
-build/
+png/    
+export/
+build/tmp/
+build/cache/
+build/lib/
+build/sstate-cache/
+build/downloads/
 bootlin-lab-data/
 __pycache__/
