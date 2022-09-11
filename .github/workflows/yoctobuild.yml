@@ -44,19 +44,15 @@ jobs:
           zstd \
           liblz4-tool
         
-    - name: Initialise Yocto
+    - name: Run Bitbake
       run: |
         . ${GITHUB_WORKSPACE}/poky/oe-init-build-env
 
         sed -i "s|/home/chris/Projects/Yocto/bbb/beaglebone_black_am335x|${GITHUB_WORKSPACE}|g" ${GITHUB_WORKSPACE}/build/conf/bblayers.conf
 
-    - name: Run Bitbake
-      run: |
         bitbake core-image-minimal
         bitbake core-image-minimal - g
 
-    - name: Export Dot files and create dependency graph images
-      run: |
         pushd ${GITHUB_WORKSPACE}/export_bitbake_dot_depends && ./export_depends_dot.sh && popd || popd
         pushd ${GITHUB_WORKSPACE}/export_bitbake_dot_depends && python3 -m dot2graph && popd || popd
 
