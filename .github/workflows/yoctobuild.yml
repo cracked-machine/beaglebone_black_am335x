@@ -46,7 +46,7 @@ jobs:
         
     - name: Run Bitbake
       run: |
-        . ${GITHUB_WORKSPACE}/poky/oe-init-build-env
+        . ${GITHUB_WORKSPACE}/poky/oe-init-build-env ${GITHUB_WORKSPACE}/build
 
         sed -i "s|/home/chris/Projects/Yocto/bbb/beaglebone_black_am335x|${GITHUB_WORKSPACE}|g" ${GITHUB_WORKSPACE}/build/conf/bblayers.conf
 
