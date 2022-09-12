@@ -1,0 +1,4 @@
+SANITY_VERSION 1
+TMPDIR /home/chris/Projects/Yocto/bbb/beaglebone_black_am335x/build/tmp
+SSTATE_DIR /home/chris/Projects/Yocto/bbb/beaglebone_black_am335x/build/sstate-cache
+NATIVELSBSTRING ubuntu-20.04
